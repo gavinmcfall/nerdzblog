@@ -10,6 +10,7 @@ languages:
     languageName: "English"
     title: "Nerdz"
     weight: 1
+timeZone: "Pacific/Auckland"
 
 theme: "hugo-theme-stack"
 
@@ -102,25 +103,3 @@ markup:
     lineNos: true
     lineNumbersInTable: true
     tabWidth: 4
-# module:
-#   mounts:
-#     - source: node_modules/node-vibrant/dist
-#       includeFiles: [vibrant.min.js]
-#       # target: assets/js
-#       target: static/assets/js
-#     - source: node_modules/photoswipe/dist
-#       includeFiles: [photoswipe.min.js, photoswipe-ui-default.min.js, photoswipe.css, default-skin/default-skin.css]
-#       # target: assets/js
-#       target: static/assets/js
-#     - source: node_modules/katex/dist
-#       includeFiles: [katex.min.js, katex.min.css, contrib/auto-render.min.js]
-#       # target: assets/js
-#       target: static/assets/js
-#     - source: node_modules/dompurify/dist
-#       includeFiles: [purify.min.js]
-#       # target: assets/js
-#       target: static/assets/js
-#     - source: assets
-#       target: assets
-#     - source: static
-#       target: static
