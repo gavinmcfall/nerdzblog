@@ -24,7 +24,7 @@ params:
   mainSections: ["posts"]
   featuredImageField: image
   rssFullContent: true
-  favicon: "/images/favicon.ico"
+  favicon: "/images/favicon.png"
   colorScheme:
     toggle: true
     default: "dark"
@@ -55,7 +55,7 @@ params:
     readingTime: true
     license:
       enabled: true
-      default: "This work by JJGadgets is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0)."
+      default: "This work by Gavin McFall is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0)."
   comments:
     enabled: false
   imageProcessing:
@@ -69,28 +69,22 @@ menu:
   social:
     - identifier: "github"
       name: "GitHub"
-      url: "https://github.com/JJGadgets"
+      url: "https://github.com/gavinmcfall"
       weight: 1
       params:
         icon: "brand-github"
-    - identifier: "fediverse"
-      name: "Fediverse"
-      url: "https://social.jjgadgets.tech/@jj"
-      weight: 2
-      params:
-        icon: "tabler-mastodon"
     - identifier: "email"
       name: "Email"
-      url: "mailto:contact@jjgadgets.tech"
-      weight: 3
+      url: "mailto:contact@nerdz.co.nz"
+      weight: 2
       params:
         icon: "tabler-mail"
-    - identifier: "tokenring"
-      name: "Tokenring"
-      url: "https://tokenring.monoxane.io/#jjgadgets"
-      weight: 4
+    - identifier: "Linkedin"
+      name: "Linkedin"
+      url: "https://www.linkedin.com/in/gavinmcfall/"
+      weight: 3
       params:
-        icon: "tokenring-dark"
+        icon: "brand-linkedin"
 
 markup:
   goldmark:
