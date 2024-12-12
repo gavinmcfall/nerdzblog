@@ -1,0 +1,132 @@
+---
+title: "Nerdz"
+baseURL: "https://blog.nerdz.cloud"
+copyright: "Gavin McFall"
+
+languageCode: "en-nz"
+defaultContentLanguage: "en"
+languages:
+  en:
+    languageName: "English"
+    title: "Nerdz"
+    weight: 1
+
+theme: "hugo-theme-stack"
+
+permalinks:
+  posts: "/:slug/"
+  about: "/about"
+  archives: "/archives"
+  links: "/links"
+  search: "/search"
+
+params:
+  mainSections: ["posts"]
+  featuredImageField: image
+  rssFullContent: true
+  favicon: "/images/favicon.ico"
+  colorScheme:
+    toggle: true
+    default: "dark"
+  sidebar:
+    # compact: true
+    subtitle: "Life, Tech, Linux, Kubernetes."
+    avatar:
+      enabled: true
+      local: true
+      src: "images/icon.png"
+  widgets:
+    homepage:
+      - type: search
+      - type: categories
+        params:
+          limit: 9999
+      - type: tag-cloud
+        params:
+          limit: 9999
+      - type: archives
+        params:
+          limit: 5
+    page:
+      - type: toc
+  article:
+    math: true
+    toc: true
+    readingTime: true
+    license:
+      enabled: true
+      default: "This work by JJGadgets is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0)."
+  comments:
+    enabled: false
+  imageProcessing:
+    cover:
+      enabled: true
+    content:
+      enabled: true
+
+menu:
+  main: []
+  social:
+    - identifier: "github"
+      name: "GitHub"
+      url: "https://github.com/JJGadgets"
+      weight: 1
+      params:
+        icon: "brand-github"
+    - identifier: "fediverse"
+      name: "Fediverse"
+      url: "https://social.jjgadgets.tech/@jj"
+      weight: 2
+      params:
+        icon: "tabler-mastodon"
+    - identifier: "email"
+      name: "Email"
+      url: "mailto:contact@jjgadgets.tech"
+      weight: 3
+      params:
+        icon: "tabler-mail"
+    - identifier: "tokenring"
+      name: "Tokenring"
+      url: "https://tokenring.monoxane.io/#jjgadgets"
+      weight: 4
+      params:
+        icon: "tokenring-dark"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: false
+  tableOfContents:
+    endLevel: 4
+    ordered: true
+    startLevel: 2
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+    lineNoStart: 1
+    lineNos: true
+    lineNumbersInTable: true
+    tabWidth: 4
+# module:
+#   mounts:
+#     - source: node_modules/node-vibrant/dist
+#       includeFiles: [vibrant.min.js]
+#       # target: assets/js
+#       target: static/assets/js
+#     - source: node_modules/photoswipe/dist
+#       includeFiles: [photoswipe.min.js, photoswipe-ui-default.min.js, photoswipe.css, default-skin/default-skin.css]
+#       # target: assets/js
+#       target: static/assets/js
+#     - source: node_modules/katex/dist
+#       includeFiles: [katex.min.js, katex.min.css, contrib/auto-render.min.js]
+#       # target: assets/js
+#       target: static/assets/js
+#     - source: node_modules/dompurify/dist
+#       includeFiles: [purify.min.js]
+#       # target: assets/js
+#       target: static/assets/js
+#     - source: assets
+#       target: assets
+#     - source: static
+#       target: static
