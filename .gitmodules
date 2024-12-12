@@ -1,0 +1,9 @@
+[submodule "themes/hugo-theme-stack"]
+	path = themes/hugo-theme-stack
+	url = https://github.com/CaiJimmy/hugo-theme-stack/
+[submodule "assets/images"]
+	path = assets/images
+	url = https://github.com/gavinmcfall/images
+[submodule "static/images"]
+	path = static/images
+	url = https://github.com/gavinmcfall/images
