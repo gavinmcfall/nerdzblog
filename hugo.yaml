@@ -25,7 +25,7 @@ params:
   mainSections: ["posts"]
   featuredImageField: image
   rssFullContent: true
-  favicon: "/images/favicon.png"
+  favicon: "images/favicon.png"
   colorScheme:
     toggle: true
     default: "dark"
