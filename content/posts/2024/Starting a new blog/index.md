@@ -19,7 +19,7 @@ A little about me.
 
 Hi, I am Gavin :)
 
-![Gavin McFall](/images/avatar.jpg)
+![Gavin McFall](/avatar.jpg)
 
 I am a QA (Quality Advocate) I help my team build better quality software.
 I am a full time Nerd with diverse hobbies from Cars to 3D Printing to Kubernetes.
