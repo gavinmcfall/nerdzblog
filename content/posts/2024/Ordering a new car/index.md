@@ -41,7 +41,7 @@ For me, this experience flipped a switch in my head, putting me into "research" 
 
 ![Skoda Superb Sportline Wagon](/skoda.jpg)
 
-- Fuel is getting increasingly expensive with 95 Octane costing $&nbsp;2.75 per L with a 70L tank. I'm spending Nearly $&nbsp;200 per fill and filling twice a month
+- Fuel is getting increasingly expensive with 95 Octane costing \$2.75 per L with a 70L tank. I'm spending Nearly \$200 per fill and filling twice a month
 - The car is huge, and parking it is a pain
 - The Infotainment SUCKS!
   - It's really slow to start
@@ -108,11 +108,11 @@ Tesla using UDC made this choice even easier as my Skoda was financed with UDC. 
 
 Example (arbitrary numbers for easy math):
 
-- The new car is worth $ 100,000
-- Your trade-in is valued at $ 50,000
-- You still owe $ 25,000 on the trade-in
+- The new car is worth \$100,000
+- Your trade-in is valued at \$50,000
+- You still owe \$25,000 on the trade-in
 - Total new finance = NewCarPrice - (Trade-in value - OldCarBalance)
-- Total new finance = &#36;100,000 - (&#36;50,000 - &#36;25,000) = $ 75,000
+- Total new finance = \$100,000 - (\$50,000 - \$25,000) = \$75,000
 
 The next day, I contacted a colleague at work and asked for their Referral code to order a new Tesla.
 

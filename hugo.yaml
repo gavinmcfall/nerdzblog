@@ -91,6 +91,18 @@ markup:
   goldmark:
     renderer:
       unsafe: false
+    extensions:
+      passthrough:
+        delimiters:
+          block:
+            - - \[
+              - \]
+            - - $$
+              - $$
+          inline:
+            - - \(
+              - \)
+        enable: true
   tableOfContents:
     endLevel: 4
     ordered: true
