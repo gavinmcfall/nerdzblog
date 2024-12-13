@@ -1,0 +1,39 @@
+{{- $List := index .Context.Site.Data.external .Namespace -}}
+{{- with $List -}}
+    {{- range . -}}
+        {{- if eq .type "script" -}}
+            <script 
+                crossorigin="anonymous" 
+                {{- with resources.GetRemote .src -}}
+                    {{- $newPath := print "assets/js" .Name -}}
+                    {{- with resources.Copy $newPath . -}}
+                        src="{{ .RelPermalink }}" 
+                        {{- with . | fingerprint "sha256" -}}
+                            integrity="{{ .Data.Integrity }}" 
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
+                {{ if .defer }} defer {{ end }}
+                >
+            </script>
+        {{- else if eq .type "style" -}}
+            <link 
+                rel="stylesheet" 
+                {{- with resources.GetRemote .src -}}
+                    {{- $newPath := print "assets/css" .Name -}}
+                    {{- with resources.Copy $newPath . -}}
+                        href="{{ .RelPermalink }}"
+                        {{- with . | fingerprint "sha256" -}}
+                            integrity="{{ .Data.Integrity }}" 
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
+                crossorigin="anonymous"
+            >
+        {{- else -}}
+            {{- errorf "Error: unknown external resource type: %s" .type -}}
+        {{- end -}}
+    {{- end -}}
+{{- else -}}
+    {{- errorf "Error: external resource '%s' is not found" .Namespace -}}
+{{- end -}}
