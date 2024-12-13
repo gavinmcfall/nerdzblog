@@ -40,7 +40,7 @@ For me, this experience flipped a switch in my head, putting me into "research" 
 
 ![Skoda Superb Sportline Wagon](/skoda.jpg)
 
-- Fuel is getting increasingly expensive with 95 Octane costing $2.75 per L with a 70L tank. I'm spending Nearly $200 per fill and filling twice a month
+- Fuel is getting increasingly expensive with 95 Octane costing 2.75 per L with a 70L tank. I'm spending Nearly 200 per fill and filling twice a month
 - The car is huge, and parking it is a pain
 - The Infotainment SUCKS!
   - It's really slow to start
@@ -89,7 +89,7 @@ Let me tell you, The INSANE acceleration profile lives up to the name. I had nev
 
 Back at the dealership and chatting with the Sales guy I learned some useful information.
 
-- Tesla had just increased its referral discount to $1,600 for the purchaser and $800 in Tesla credit for the referrer
+- Tesla had just increased its referral discount to 1,600 for the purchaser and 800 in Tesla credit for the referrer
 - Tesla also used [UDC Finance](https://www.udc.co.nz/index.html)
 - Tesla was offering 2.99% while my existing car was at 7.98%
 
