@@ -4,6 +4,7 @@ description: "Time to stop burning dead dinosaurs"
 date: 2024-12-13
 slug: "2024/ordering-a-new-car"
 toc: true
+math: false
 draft: false
 Tags:
   - Tesla
