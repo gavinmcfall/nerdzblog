@@ -51,7 +51,7 @@ params:
     page:
       - type: toc
   article:
-    math: true
+    math: false
     toc: true
     readingTime: true
     license:
