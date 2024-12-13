@@ -40,7 +40,7 @@ For me, this experience flipped a switch in my head, putting me into "research" 
 
 ![Skoda Superb Sportline Wagon](/skoda.jpg)
 
-- Fuel is getting increasingly expensive with 95 Octane costing NZD $2.75 per L with a 70L tank. I'm spending Nearly $200 per fill and filling twice a month
+- Fuel is getting increasingly expensive with 95 Octane costing NZD \$2.75 per L with a 70L tank. I'm spending Nearly \$200 per fill and filling twice a month
 - The car is huge, and parking it is a pain
 - The Infotainment SUCKS!
   - It's really slow to start
@@ -89,7 +89,7 @@ Let me tell you, The INSANE acceleration profile lives up to the name. I had nev
 
 Back at the dealership and chatting with the Sales guy I learned some useful information.
 
-- Tesla had just increased its referral discount to $1,600 for the purchaser and $800 in Tesla credit for the referrer
+- Tesla had just increased its referral discount to \$1,600 for the purchaser and \$800 in Tesla credit for the referrer
 - Tesla also used [UDC Finance](https://www.udc.co.nz/index.html)
 - Tesla was offering 2.99% while my existing car was at 7.98%
 
@@ -98,7 +98,7 @@ Tesla using UDC made this choice even easier as my Skoda was financed with UDC. 
 ### Ordering Process
 
 1. Everything is done inside teh Tesla App on your phone
-1. You purchase the car through Tesla and pay the (_100% refundable if finance or Trade-in fails_) deposit of $400
+1. You purchase the car through Tesla and pay the (_100% refundable if finance or Trade-in fails_) deposit of \$400
 1. Choose UDC for the Finance
 1. You tell Tesla that you are trading in a car
 1. You let them know that money is owed on the car and that it's with UDC
@@ -107,11 +107,11 @@ Tesla using UDC made this choice even easier as my Skoda was financed with UDC. 
 
 Example (arbitrary numbers for easy math):
 
-- The new car is worth $100,000
-- Your trade-in is valued at $50,000
-- You still owe $25,000 on the trade-in
+- The new car is worth \$100,000
+- Your trade-in is valued at \$50,000
+- You still owe \$25,000 on the trade-in
 - Total new finance = NewCarPrice - (Trade-in value - OldCarBalance)
-- Total new finance = $100,000 - ($50,000 - $25,000) = $75,000
+- Total new finance = \$100,000 - (\$50,000 - \$25,000) = \$75,000
 
 The next day, I contacted a colleague at work and asked for their Referral code to order a new Tesla.
 
