@@ -41,7 +41,7 @@ For me, this experience flipped a switch in my head, putting me into "research" 
 
 ![Skoda Superb Sportline Wagon](/skoda.jpg)
 
-- Fuel is getting increasingly expensive with 95 Octane costing &#36;2.75 per L with a 70L tank. I'm spending Nearly $ 200 per fill and filling twice a month
+- Fuel is getting increasingly expensive with 95 Octane costing &nbsp;2.75 per L with a 70L tank. I'm spending Nearly &nbsp;$200 per fill and filling twice a month
 - The car is huge, and parking it is a pain
 - The Infotainment SUCKS!
   - It's really slow to start
