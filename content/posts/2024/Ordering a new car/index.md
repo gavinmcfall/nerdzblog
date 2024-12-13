@@ -89,7 +89,7 @@ Let me tell you, The INSANE acceleration profile lives up to the name. I had nev
 
 Back at the dealership and chatting with the Sales guy I learned some useful information.
 
-- Tesla had just increased its referral discount to $ 1,600 for the purchaser and $ 800 in Tesla credit for the referrer
+- Tesla had just increased its referral discount to \$1\,600 for the purchaser and \$800 in Tesla credit for the referrer
 - Tesla also used [UDC Finance](https://www.udc.co.nz/index.html)
 - Tesla was offering 2.99% while my existing car was at 7.98%
 
