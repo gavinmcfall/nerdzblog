@@ -95,6 +95,8 @@ Back at the dealership and chatting with the Sales guy I learned some useful inf
 
 Tesla using UDC made this choice even easier as my Skoda was financed with UDC. Here is how it works
 
+### Ordering Process
+
 1. Everything is done inside teh Tesla App on your phone
 1. You purchase the car through Tesla and pay the (_100% refundable if finance or Trade-in fails_) deposit of $400
 1. Choose UDC for the Finance
