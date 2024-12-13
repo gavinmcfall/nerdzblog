@@ -40,7 +40,7 @@ For me, this experience flipped a switch in my head, putting me into "research" 
 
 ![Skoda Superb Sportline Wagon](/skoda.jpg)
 
-- Fuel is getting increasingly expensive with 95 Octane costing NZD $ 2.75 per L with a 70L tank. I'm spending Nearly $ 200 per fill and filling twice a month
+- Fuel is getting increasingly expensive with 95 Octane costing NZD \$2.75 per L with a 70L tank. I'm spending Nearly \$200 per fill and filling twice a month
 - The car is huge, and parking it is a pain
 - The Infotainment SUCKS!
   - It's really slow to start
@@ -97,7 +97,7 @@ Tesla using UDC made this choice even easier as my Skoda was financed with UDC. 
 
 ### Ordering Process
 
-1. Everything is done inside teh Tesla App on your phone
+1. Everything is done inside the Tesla App on your phone
 1. You purchase the car through Tesla and pay the (_100% refundable if finance or Trade-in fails_) deposit of $ 400
 1. Choose UDC for the Finance
 1. You tell Tesla that you are trading in a car
