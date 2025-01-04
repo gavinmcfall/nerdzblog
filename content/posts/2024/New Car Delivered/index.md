@@ -129,16 +129,22 @@ Next steps are getting some upgrades done on the car.
   - [Stickers With Icons](https://enhauto.com/product/icons)
 
 - Samsung
-  - [T7 Shield 1TB Rugged Portable External SSD - Blue](https://www.pbtech.co.nz/product/HDDSSM37102/Samsung-T7-Shield-1TB-Rugged-Portable-External-SSD) - For Sentry Mode, etc
+  - [T7 Shield 1TB Rugged Portable External SSD - Blue](https://www.pbtech.co.nz/product/HDDSSM37102/Samsung-T7-Shield-1TB-Rugged-Portable-External-SSD)
+    - For Sentry Mode, etc
 
 - Aliexpress
-  - [Glove Box Flocking USB HUB Adapter](https://www.aliexpress.com/item/1005004921743402.html?spm=a2g0o.order_list.order_list_main.17.50441802c2FxRO) - Gives me more USB ports for data and charging
+  - [Glove Box Flocking USB HUB Adapter](https://www.aliexpress.com/item/1005004921743402.html?spm=a2g0o.order_list.order_list_main.17.50441802c2FxRO)
+    - Gives me more USB ports for data and charging
 
 - Temu
-  - [Center Console Organizer for Tesla Model 3 Highland](https://www.temu.com/goods.html?goods_id=601099713528312) - Sliding style
-  - [128W QC3.0 High Power Fast Charger 3*USB 1*PD Car Charger Portable 3 Socket](https://www.temu.com/goods.html?goods_id=601099523217349) - The Enhauto S3XY Commander takes up the only 12v accessory plug so this was needed
-  - [Silicone Center Console Organizer Tray Storage Box](https://www.temu.com/goods.html?goods_id=601099690729679) - Convenient place to store sunglasses
-  - [2x ar Cup Holder Tablet Phone Mount with Heavy Duty Cupholder Base](https://www.temu.com/goods.html?goods_id=601099577197483) - For the kids when they want to do things other than what is built into the Tesla's rear screen
+  - [Center Console Organizer for Tesla Model 3 Highland](https://www.temu.com/goods.html?goods_id=601099713528312)
+    - Sliding style
+  - [128W QC3.0 High Power Fast Charger 3*USB 1*PD Car Charger Portable 3 Socket](https://www.temu.com/goods.html?goods_id=601099523217349)
+    - The Enhauto S3XY Commander takes up the only 12v accessory plug so this was needed
+  - [Silicone Center Console Organizer Tray Storage Box](https://www.temu.com/goods.html?goods_id=601099690729679)
+    - Convenient place to store sunglasses
+  - [2x ar Cup Holder Tablet Phone Mount with Heavy Duty Cupholder Base](https://www.temu.com/goods.html?goods_id=601099577197483)
+    - For the kids when they want to do things other than what is built into the Tesla's rear screen
 
 - Tessories NZ
   - [Bundle: Model 3 (2024-2025) Floor Mats + Door Pocket Inserts](https://tessories.nz/product/bundle-model-3-highland-floor-mats-door-pocket-inserts/)
