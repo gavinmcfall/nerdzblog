@@ -1,7 +1,7 @@
 ---
 title: New Car Delivered
 description: "Wait, thats not red!"
-date: 2025-01-04
+date: 2024-12-27
 slug: "2024/new-car-delivered"
 toc: true
 math: false
