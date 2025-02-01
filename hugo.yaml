@@ -111,6 +111,7 @@ markup:
     noClasses: false
     codeFences: true
     guessSyntax: true
+    style: "monokai"
     lineNoStart: 1
     lineNos: true
     lineNumbersInTable: true
