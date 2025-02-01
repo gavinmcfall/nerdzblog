@@ -26,6 +26,8 @@ params:
   featuredImageField: image
   rssFullContent: true
   favicon: "images/favicon.png"
+  customCSS:
+    - "css/syntax.css"
   colorScheme:
     toggle: true
     default: "dark"
