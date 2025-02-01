@@ -26,8 +26,6 @@ params:
   featuredImageField: image
   rssFullContent: true
   favicon: "images/favicon.png"
-  customCSS:
-    - "css/syntax.css"
   colorScheme:
     toggle: true
     default: "dark"
@@ -113,7 +111,6 @@ markup:
     noClasses: false
     codeFences: true
     guessSyntax: true
-    style: "monokai"
     lineNoStart: 1
     lineNos: true
     lineNumbersInTable: true
