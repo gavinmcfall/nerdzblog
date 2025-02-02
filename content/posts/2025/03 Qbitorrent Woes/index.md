@@ -1,17 +1,16 @@
 ---
 title: QBitorrent Woes
 description: "All connections stopped"
-date: 2025-02-01
-slug: "2025/migrating-database-clusters"
+date: 2025-02-03
+slug: "2025/qbitorrent-woes"
 toc: true
 math: false
 draft: false
 Tags:
   - Kubernetes
-  - Database
-  - Postgres
-  - Maintenance
-Categories: [Kubernetes, Database]
+  - Downloads
+  - Credentials
+Categories: [Kubernetes]
 ---
 
 > "A lesson learned and not remembered is a mistake waiting to happen again."  
