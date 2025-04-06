@@ -1,5 +1,5 @@
 ---
-title: Understanding AI: Generative AI, LLMs, ML & the Open vs Closed Source Debate
+title: "Understanding AI: Generative AI, LLMs, ML & the Open vs Closed Source Debate"
 description: "Breaking down the buzzwords and tech behind today's AI boom"
 date: 2025-04-06
 slug: "2025/understanding-ai"
@@ -14,7 +14,6 @@ Tags:
   - Generative AI
 Categories: [Tech, AI]
 ---
-
 
 > "The real question is not whether machines think, but whether humans do."  
 > — *B.F. Skinner*
@@ -135,4 +134,3 @@ For now, just know: open source is not only *viable* — it's starting to lead t
 - My next post will cover how I run LLMs on-demand in a homelab Kubernetes cluster.
 
 Until then, keep your pods healthy, your YAML clean, and your tokens per second high.
-
