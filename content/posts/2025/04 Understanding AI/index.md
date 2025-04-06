@@ -6,14 +6,15 @@ slug: "2025/understanding-ai"
 toc: true
 math: false
 draft: false
-tags:
+Tags:
   - AI
   - Machine Learning
   - LLM
   - Open Source
   - Generative AI
-categories: [Tech, AI]
+Categories: [Tech, AI]
 ---
+
 
 > "The real question is not whether machines think, but whether humans do."  
 > — *B.F. Skinner*
