@@ -27,7 +27,6 @@ But here’s the thing — not all AI is created equal.
 
 There’s a ton of jargon flying around: LLMs, ML, AI, Generative AI, Transformers, Diffusion Models... and people use them interchangeably (wrongly, I might add). So let’s break this all down, and throw in some opinionated takes on open vs closed source models while we’re at it.
 
----
 
 ## The Big Three
 
@@ -51,7 +50,6 @@ This is a **subset of ML**. It’s trained to create new content — text, image
 
 So where do **LLMs** come into this?
 
----
 
 ## LLMs – Large Language Models
 
@@ -67,7 +65,6 @@ Popular LLMs you’ve probably heard of:
 - Mistral (Open source, 🔥 fast rising star)
 - LLaMA (Meta, open-ish source — depends who you ask)
 
----
 
 ## Closed Source vs Open Source Models
 
@@ -103,7 +100,6 @@ These models release their weights, training data (sometimes), and usually run g
 - May lag slightly behind in benchmark scores  
 - Inference can be slower without proper infra (aka don’t expect 7B models to run well on a Pi)
 
----
 
 ## How They Interact
 
@@ -114,7 +110,6 @@ This is something a lot of folks miss: these aren't siloed systems. Here's how t
 - **Generative AI** is a purpose: to *generate* — and LLMs fall under this when they generate text.  
 - **You** interact with Generative AI (via UI, chat, API) → the underlying LLM runs inference → built on top of ML training → likely trained using massive GPU farms, a few metric tons of Reddit data, and questionable StackOverflow posts.
 
----
 
 ## My Perspective
 
@@ -129,7 +124,6 @@ I’ll be writing about that setup (and the fun/chaos of queue-based autoscaling
 
 For now, just know: open source is not only *viable* — it's starting to lead the charge.
 
----
 
 ## TL;DR
 

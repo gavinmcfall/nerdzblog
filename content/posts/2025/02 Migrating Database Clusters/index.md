@@ -1,20 +1,18 @@
 ---
-title: Understanding AI: Generative AI, LLMs, ML & the Open vs Closed Source Debate
-description: "Breaking down the buzzwords and tech behind today's AI boom"
-date: 2025-04-06
-slug: "2025/understanding-ai"
+title: Migrating Database Clusters
+description: "When recovery goes bad"
+date: 2025-02-01
+slug: "2025/migrating-database-clusters"
 toc: true
 math: false
 draft: false
 Tags:
-  - AI
-  - Machine Learning
-  - LLM
-  - Open Source
-  - Generative AI
-Categories: [Tech, AI]
+  - Kubernetes
+  - Database
+  - Postgres
+  - Maintenance
+Categories: [Kubernetes, Database]
 ---
-
 
 > "The most powerful database is the one you don’t have to recover."  
 > — *Unknown*
