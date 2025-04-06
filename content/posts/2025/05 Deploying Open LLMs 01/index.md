@@ -5,7 +5,7 @@ date: 2025-04-07
 slug: "2025/deploying-open-llms-01"
 toc: true
 math: false
-draft: true
+draft: false
 Tags:
   - AI
   - LLM
