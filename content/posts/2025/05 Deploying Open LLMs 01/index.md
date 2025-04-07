@@ -259,7 +259,7 @@ If you plan to have more than one user then you should probably setup groups.
 #### Allowing model access
 
 If like me, you configured `OPENAI_API_KEY` in your externalsecret then you will have access to ALL the OpenAI (ChatGPT) models that you plan allows...There is a lot
-If you did not (and want to) you will need to go through the process of generating an API Key and adding it to your `externalsecret.yaml` see [above](#-gaining-access-to-openai-chatgpt-models-from-a-free-or-paid-account)
+If you did not (and want to) you will need to go through the process of generating an API Key and adding it to your `externalsecret.yaml` see [above](#gaining-access-to-openai-chatgpt-models-from-a-free-or-paid-account)
 
 1. Navigate to your admin settings `https://{Open-WebUI URL}/admin/settings`
 1. In the left manu click on `models`
