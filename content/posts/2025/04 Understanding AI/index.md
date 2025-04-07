@@ -84,6 +84,8 @@ These are typically the domain of Big Tech. They don't share their training data
 - Expensive at scale  
 - Not privacy-friendly
 
+Note: Many of the closed source Generative AI tools do release their models for use on Ollama
+
 ### 🔓 Open Source AI (Mistral, LLaMA, TinyLLaMA, Mixtral, etc.)
 
 These models release their weights, training data (sometimes), and usually run great on your own hardware or cluster.
@@ -127,7 +129,7 @@ For now, just know: open source is not only *viable* — it's starting to lead t
 ## TL;DR
 
 - **AI** is the umbrella.
-- **ML** teaches AI how to behave.
+- **ML** teaches AI how to behave (The building blocks of Generative AI).
 - **Generative AI** creates content.
 - **LLMs** are language specialists in the generative AI world.
 - **Open source** is rising fast and worth your attention.
