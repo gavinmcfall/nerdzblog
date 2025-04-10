@@ -67,7 +67,7 @@ My Credentials had expired...
 
 Generate a new config file using the settings below. It should automatically pickup the best server for you and show it on step4
 
-![Proton VPN Wireguard Config](/new-wg-configpng)
+![Proton VPN Wireguard Config](/new-wg-config.png)
 
 Download the config file and open it in your favorite text editor
 
