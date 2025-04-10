@@ -12,7 +12,9 @@ languages:
     weight: 1
 timeZone: "Pacific/Auckland"
 
-theme: "hugo-theme-stack"
+theme:
+  - hugo-notice
+  - hugo-theme-stack
 
 permalinks:
   posts: "/:slug/"
