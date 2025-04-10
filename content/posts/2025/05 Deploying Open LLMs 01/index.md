@@ -128,7 +128,7 @@ Some of these I will set in the `helmrelease.yaml` and others in the `externalse
 | `jina`       | [Jina AI](https://jina.ai/)                            | ✅ Vector-aware search options                                    | ❌ Focused more on enterprise & vector DBs            |
 | `bing`       | Microsoft Bing search engine                           | ✅ Wide coverage, high-quality results                            | ❌ Requires API key, tracking concerns                |
 
-{{< notice warning >}}
+{{< notice note >}}
 I will be using Searxng which will require me to deploy that BEFORE I can proceed.
 {{< /notice >}}
 
