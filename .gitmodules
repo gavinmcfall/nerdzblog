@@ -7,3 +7,6 @@
 [submodule "static/images"]
 	path = static/images
 	url = https://github.com/gavinmcfall/images
+[submodule "themes/hugo-notice"]
+	path = themes/hugo-notice
+	url = https://github.com/martignoni/hugo-notice.git
