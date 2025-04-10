@@ -4,7 +4,7 @@ description: "Rolling out Ollama in Kubernetes with shared storage and Open-WebU
 date: 2025-04-10
 slug: "2025/deploying-open-llms-03"
 toc: true
-draft: true
+draft: false
 Tags:
   - Ollama
   - LLM
@@ -119,14 +119,17 @@ Instead of declarative model pulls, I now:
     `kubectl -n cortex exec -it $(kubectl -n cortex get pods -l app.kubernetes.io/name=ollama -o jsonpath='{.items[0].metadata.name}') -- ollama list`
 1. Remember, if you want to change your default model, click the cog next to the download icon you clicked earlier. here you can reorder the model list and choose your default.
 
-
+{{< notice note >}}
 Because all my Ollama pods share the same `/models` volume, once a model is downloaded, it becomes instantly available to all nodes.
+{{< /notice >}}
+
 
 ## Gotchas
 
 - **You can’t use `ollama pull` unless the server is running.** Init containers don’t work unless you do a background process trick.
 - **Use a DaemonSet only if you have shared storage.** Otherwise you’ll redownload the same models three times.
 - **Open-WebUI doesn’t preload models declaratively.** Use the admin UI.
+- **Text Only** These models are not able to read images an interpert text.
 
 ## My Current State
 
