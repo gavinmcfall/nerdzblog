@@ -122,7 +122,7 @@ Some of these I will set in the `helmrelease.yaml` and others in the `externalse
 | `serpstack`  | [Serpstack](https://serpstack.com/)                    | ✅ Easy API for Google results                                    | ❌ Commercial service, requires API key                |
 | `serper`     | [Serper](https://serper.dev/)                          | ✅ Google-like output, simple API                                 | ❌ API limits, free tier capped                        |
 | `serply`     | [Serply](https://www.serply.io/)                       | ✅ Tailored for AI + LLM use cases                                | ❌ Smaller user base, may have reliability issues      |
-| `searchapi`  | [SearchAPI](https://searchapi.io/)                     | ✅ Multiple engines supported, flexible                           | ❌ May introduce latency depending on config           |
+| `SerpApi`  | [SerpApi](https://serpapi.com//)                     | ✅ search API that supports many engines with quick response times | Setup done via ui. [See here](https://docs.openwebui.com/tutorials/web-search/serpapi)        |
 | `duckduckgo` | [DuckDuckGo](https://duckduckgo.com/)                  | ✅ Privacy-first, no tracking                                    | ❌ No real API (scraped or proxied, limited metadata) |
 | `tavily`     | [Tavily](https://www.tavily.com/)                      | ✅ AI-tuned search for RAG, fast                                  | ❌ Still new, smaller index                           |
 | `jina`       | [Jina AI](https://jina.ai/)                            | ✅ Vector-aware search options                                    | ❌ Focused more on enterprise & vector DBs            |
