@@ -267,6 +267,10 @@ If you're reading this and thinking "this is way too complex," you're right. Mos
 
 But if you're committed to running everything in Kubernetes (like I am), this is how you make it work.
 
+## The Result
+
+![Tesla Fleet in HASS](/Tesla-home-assistant.png)
+
 ## Final Thoughts
 
 Tesla's Fleet API setup is unnecessarily convoluted for what should be a straightforward integration. The combination of encryption keys, domain registration, public key serving, and OAuth flows feels like security theater more than actual security.
