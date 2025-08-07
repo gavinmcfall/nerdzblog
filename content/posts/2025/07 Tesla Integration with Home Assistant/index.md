@@ -1,7 +1,7 @@
 ---
 title: "Tesla Integration with Home Assistant"
 description: "Setting up the offical Tesla Fleet Addon for Home-Assistant with Kubernetes"
-date: 2025-04-10
+date: 2025-08-08
 slug: "2025/tesla-fleet-hass"
 toc: true
 draft: false
