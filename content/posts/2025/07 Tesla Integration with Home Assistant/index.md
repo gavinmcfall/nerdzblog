@@ -1,8 +1,8 @@
 ---
-title: "Deploying Open Source LLMs in a Homelab - Part 3"
-description: "Rolling out Ollama in Kubernetes with shared storage and Open-WebUI"
+title: "Tesla Integration with Home Assistant"
+description: "Setting up the offical Tesla Fleet Addon for Home-Assistant with Kubernetes"
 date: 2025-04-10
-slug: "2025/deploying-open-llms-03"
+slug: "2025/tesla-fleet-hass"
 toc: true
 draft: false
 Tags:
@@ -11,7 +11,7 @@ Tags:
   - Open-WebUI
   - Kubernetes
   - Homelab
-Categories: [AI, Homelab]
+Categories: [Automation, Homelab, Tesla]
 ---
 
 > "TL;DR Tesla don't make this simple, Kubernetes with proper security makes it worse"
