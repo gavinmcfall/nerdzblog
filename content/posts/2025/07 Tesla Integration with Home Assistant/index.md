@@ -76,7 +76,7 @@ Store these safely — you'll need both for the setup.
 1. Go to [developer.tesla.com](https://developer.tesla.com) and create an account
 2. Create a new application with these settings:
    - **OAuth Grant Type**: Authorization Code and Machine-to-Machine
-   - **Allowed Origin URL**: `https://your-hass-domain.com` e.g. hass.domain.com
+   - **Allowed Origin URL**: `https://subdomain.domain.com` e.g. hass.domain.com
    - **Redirect URI**: `https://my.home-assistant.io/redirect/oauth`
    - **Scopes**: Select ALL available scopes (Vehicle Information, Vehicle Location, Vehicle Commands, Vehicle Charging Management, Energy Product Information, Energy Product Commands)
 
