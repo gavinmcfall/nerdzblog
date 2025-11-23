@@ -1144,3 +1144,56 @@ The ImageVolume feature is working—the qbrr binary is available at `/qbrr/qbrr
 2. **Namespace-scoped Flux Kustomize** – large-scale reorganizations happen behind feature branches and are reconciled one namespace at a time instead of flipping the entire cluster at once.
 3. **Talos factory IDs in version control** – keeping the Talos schematic IDs and Thunderbolt routes in `talconfig.yaml` meant the reinstall was deterministic. Future upgrades will keep those comments updated so I always know what ISO to pull.
 4. **Document the scary steps** – posts like this become my runbook. The next time Talos needs to be rebuilt I can follow the exact steps—Ubuntu live boot, `blkdiscard`, `task talos:bootstrap`, `task flux:bootstrap`—without searching through old Discord threads.
+
+---
+
+## Update 2025-11-24: Overseerr Connectivity Issues After Gateway API Migration
+
+After completing the Envoy Gateway migration, I discovered that Overseerr couldn't communicate with any of the sonarr/radarr/plex instances. The logs showed consistent timeout errors:
+
+```
+[error][Download Tracker]: Unable to get queue from Sonarr server: Sonarr UHD
+connect ETIMEDOUT 10.90.3.202:80
+```
+
+### The Root Cause
+
+Before the migration to Gateway API routes, Overseerr was configured to use external domain names (e.g., `sonarr.${SECRET_DOMAIN}`, `radarr-uhd.${SECRET_DOMAIN}`). These domains were resolving via k8s-gateway DNS to the envoy-internal LoadBalancer IP `10.90.3.202`.
+
+The problem? **Pods cannot reach LoadBalancer IPs directly** when using Cilium's socketLB in certain configurations. While I had enabled socketLB to fix the hairpin NAT issue for external services, it wasn't working for all pod-to-LoadBalancer scenarios.
+
+Testing revealed:
+- ✅ Direct cluster DNS (`sonarr.downloads.svc.cluster.local:80`) - **WORKS**
+- ✅ ClusterIP access (`10.96.251.188:80`) - **WORKS**
+- ❌ LoadBalancer IP (`10.90.3.202:80`) - **TIMES OUT**
+- ❌ External domains (resolve to LoadBalancer IP) - **FAILS**
+
+### The Solution
+
+The fix is simple: **use internal cluster DNS names instead of external domains**. Since all the \*arr services run in the `downloads` namespace and Overseerr runs in `entertainment`, I needed to update the Overseerr configuration to use fully-qualified cluster DNS names.
+
+Update Overseerr (Settings → Services) with these internal service URLs:
+
+**Sonarr instances:**
+- Sonarr (Default): `http://sonarr.downloads.svc.cluster.local` port `80`
+- Sonarr Horror: `http://sonarr.downloads.svc.cluster.local` port `80`
+- Sonarr UHD (Default 4K): `http://sonarr-uhd.downloads.svc.cluster.local` port `80`
+- Sonarr Foreign: `http://sonarr-foreign.downloads.svc.cluster.local` port `80`
+
+**Radarr instances:**
+- Radarr (Default): `http://radarr.downloads.svc.cluster.local` port `80`
+- Radarr UHD (Default 4K): `http://radarr-uhd.downloads.svc.cluster.local` port `80`
+
+** Plex instances:**
+- Plex: `http://plex.entertainment.svc.cluster.local` port `80`
+- Tautulli: `tautulli.entertainment.svc.cluster.local` port `80`
+
+All should have SSL set to `false` since internal cluster traffic doesn't need TLS termination.
+
+### Why This Happened
+
+The original configuration worked with ingress-nginx because it ran with `hostNetwork: true`, meaning pods accessed services through the host's network stack and never hit the LoadBalancer service abstraction. Envoy Gateway deploys as regular pods without hostNetwork, so any attempt to reach a LoadBalancer IP from inside the cluster goes through the LoadBalancer service.
+
+While Cilium's socketLB is supposed to handle pod-to-LoadBalancer connectivity, the most reliable pattern is to use cluster DNS for internal service-to-service communication. LoadBalancer IPs should only be used for external ingress traffic.
+
+**Lesson learned:** After migrating from ingress-nginx to Gateway API, audit all application configurations that reference external domain names for internal services. If both the client and server are in-cluster, use cluster DNS (`<service>.<namespace>.svc.cluster.local`) instead of external domains that resolve to LoadBalancer IPs.
