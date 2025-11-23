@@ -1186,9 +1186,12 @@ Update Overseerr (Settings → Services) with these internal service URLs:
 
 ** Plex instances:**
 - Plex: `http://plex.entertainment.svc.cluster.local` port `80`
-- Tautulli: `tautulli.entertainment.svc.cluster.local` port `80`
+- Tautulli: `http://tautulli.entertainment.svc.cluster.local` port `80`
 
 All should have SSL set to `false` since internal cluster traffic doesn't need TLS termination.
+
+I also had to fix the link to Plex inside Tautulli by setting it to
+- Plex: `plex.entertainment.svc.cluster.local` port `32400`
 
 ### Why This Happened
 
