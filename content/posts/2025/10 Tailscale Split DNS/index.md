@@ -56,7 +56,7 @@ The key insight: my internal gateway (`10.90.3.202`) is already reachable via Ta
 This requires two pieces:
 
 1. **Tailscale Connector** — A pod that advertises my cluster subnet (`10.90.0.0/16`) to the Tailnet
-2. **Split DNS** — Configure Tailscale to forward `*.${SECRET_DOMAIN}` queries to my k8s-gateway
+2. **Split DNS** — Configure Tailscale to forward `*.${SECRET_DOMAIN}` queries to my UDM Pro (which has DNS records created by external-dns-unifi)
 
 ### How It Works
 
@@ -74,9 +74,9 @@ Remote Device (Tailscale connected)
          │ 4. Forward DNS query via WireGuard tunnel
          ▼
 ┌─────────────────┐
-│   k8s-gateway   │  5. Resolves paperless.${SECRET_DOMAIN}
-│   10.90.3.200   │     Returns: 10.90.3.202 (internal gateway)
-└────────┬────────┘
+│    UDM Pro      │  5. Resolves paperless.${SECRET_DOMAIN}
+│   10.90.254.1   │     Returns: 10.90.3.202 (internal gateway)
+└────────┬────────┘     (record created by external-dns-unifi)
          │
          │ 6. Response travels back via WireGuard
          ▼
@@ -144,7 +144,7 @@ Now the fun part. In the [Tailscale Admin Console](https://login.tailscale.com/a
 1. Navigate to the **DNS** tab
 2. Under **Nameservers**, click **Add nameserver** → **Custom...**
 3. Configure:
-   - **Nameserver**: `10.90.3.200` (your k8s-gateway)
+   - **Nameserver**: `10.90.254.1` (your UDM Pro)
    - Check **Restrict to domain**
    - **Domain**: `${SECRET_DOMAIN}`
 
@@ -157,7 +157,7 @@ The dialog looks like this:
 │                                                                 │
 │  Nameserver                                                     │
 │  ┌─────────────────────────────────────────────────────────┐   │
-│  │ 10.90.3.200                                             │   │
+│  │ 10.90.254.1                                             │   │
 │  └─────────────────────────────────────────────────────────┘   │
 │                                                                 │
 │  ☑ Restrict to domain                                          │
@@ -173,6 +173,10 @@ The dialog looks like this:
 ```
 
 I also enabled **Override local DNS** to ensure Tailscale's DNS config takes precedence when connected.
+
+{{< notice info >}}
+**Why UDM Pro instead of k8s-gateway?** I previously used k8s-gateway for internal DNS, but later migrated to using external-dns-unifi which pushes DNS records directly to my UDM Pro. This simplifies the architecture — UDM serves the same DNS records to LAN clients, pods (via CoreDNS forwarding), and Tailscale clients. One source of truth for internal DNS.
+{{< /notice >}}
 
 ## Testing It Works
 
@@ -248,8 +252,8 @@ The migration is straightforward:
 
 Tailscale's Split DNS feature intercepts DNS queries at the OS level. When I look up `paperless.${SECRET_DOMAIN}`:
 
-1. **On LAN**: Query goes to my UDM Pro, which has internal DNS records pointing to `10.90.3.202`
-2. **On Tailscale**: Query is intercepted and forwarded through the WireGuard tunnel to `10.90.3.200` (k8s-gateway), which returns `10.90.3.202`
+1. **On LAN**: Query goes to my UDM Pro, which has internal DNS records (created by external-dns-unifi) pointing to `10.90.3.202`
+2. **On Tailscale**: Query is intercepted and forwarded through the WireGuard tunnel to `10.90.254.1` (UDM Pro), which returns `10.90.3.202`
 
 In both cases, the browser gets `10.90.3.202`. The subsequent HTTPS request goes directly to the internal gateway — on LAN via the local network, on Tailscale via the WireGuard mesh.
 
