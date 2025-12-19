@@ -421,4 +421,18 @@ Without this, Flux doesn't substitute variables like `${ENVOY_INTERNAL_LBIP}`, a
 
 ---
 
+## Update: DSR Hairpin Limitation
+
+After this migration, I discovered that while BGP fixes L2-level hairpin routing (where traffic couldn't reach an IP "owned" by a different node via ARP), it doesn't solve all hairpin scenarios.
+
+Cilium's DSR (Direct Server Return) mode has a **same-node hairpin limitation**: when a pod tries to reach a LoadBalancer VIP and the backend for that VIP is on the *same node*, traffic fails. The packet goes out to the router, comes back, and gets dropped.
+
+**The symptom**: Pods intermittently timing out when reaching internal services — but only when the pod and the service backend happen to be scheduled on the same node.
+
+**The solution**: CoreDNS rewriting to return ClusterIP instead of LoadBalancer VIP for pod-to-service traffic.
+
+Read the full story: [When BGP Doesn't Fix Hairpin: Cilium DSR and the Same-Node Problem](/2025/cilium-dsr-hairpin-workaround/)
+
+---
+
 *This post documents the BGP migration I performed on my [home-ops](https://github.com/gavinmcfall/home-ops) repository. The centralized LBIP pattern and BGP configuration were refined through several iterations with help from Claude Code.*
