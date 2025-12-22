@@ -290,6 +290,30 @@ Going forward, all VolSync-backed PVCs use `ceph-block`:
 
 CephFS is still useful for ReadWriteMany workloads where multiple pods need access to the same files. Just don't use it for data that needs to survive restore operations.
 
+### Update 2025-12-23: CSI Read Affinity
+
+After discussing this issue with the [home-operations](https://github.com/home-operations) community, I discovered another contributing factor: **CSI Read Affinity**.
+
+```yaml
+# kubernetes/apps/rook-ceph/rook-ceph/cluster/helmrelease.yaml
+cephClusterSpec:
+  csi:
+    readAffinity:
+      enabled: true  # THIS CAUSES PROBLEMS
+```
+
+This setting makes the Ceph CSI driver prefer reading from OSDs on the same node as the pod. While this sounds like a performance optimization, it can cause data consistency issues with CephFS—particularly with sparse file handling during restore operations.
+
+**The fix**: Disable it.
+
+```yaml
+csi:
+  readAffinity:
+    enabled: false
+```
+
+If you're experiencing CephFS data corruption, check this setting first.
+
 ## Quick Reference
 
 ```bash
