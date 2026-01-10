@@ -5,7 +5,7 @@ date: 2026-01-10
 slug: "2026/pterodactyl-truenas-setup"
 toc: true
 math: false
-draft: true
+draft: false
 Tags:
   - Pterodactyl
   - TrueNAS
