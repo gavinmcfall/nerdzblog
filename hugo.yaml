@@ -68,14 +68,15 @@ params:
       enabled: true
 
 menu:
-  main: []
-  social:
-    - identifier: "rss"
-      name: "RSS"
-      url: "/index.xml"
-      weight: 0
+  main:
+    - identifier: "support"
+      name: "Support me"
+      url: "https://ko-fi.com/gavinmcfall"
+      weight: 100
       params:
-        icon: "rss"
+        icon: "ko-fi"
+        newTab: true
+  social:
     - identifier: "github"
       name: "GitHub"
       url: "https://github.com/gavinmcfall"
@@ -94,6 +95,18 @@ menu:
       weight: 3
       params:
         icon: "brand-linkedin"
+    - identifier: "rss"
+      name: "RSS"
+      url: "/index.xml"
+      weight: 4
+      params:
+        icon: "rss"
+    - identifier: "ko-fi"
+      name: "Ko-fi"
+      url: "https://ko-fi.com/gavinmcfall"
+      weight: 5
+      params:
+        icon: "ko-fi"
 
 markup:
   goldmark:

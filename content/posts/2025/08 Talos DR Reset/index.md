@@ -203,7 +203,7 @@ Make sure if you are going to be lazy, you are also accurate — the dry run is 
 
 ## Install Time
 
-![Don't Panic](/dont-panic.jpg)
+![Don't Panic](dont-panic.webp)
 
 \#ifYouKnowYouKnow
 
