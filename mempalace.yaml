@@ -1,0 +1,45 @@
+wing: nerdzblog
+rooms:
+- name: themes
+  description: Files from themes/
+  keywords:
+  - themes
+  - themes
+- name: content
+  description: Files from content/
+  keywords:
+  - content
+  - content
+- name: archetypes
+  description: Files from archetypes/
+  keywords:
+  - archetypes
+  - archetypes
+- name: public
+  description: Files from public/
+  keywords:
+  - public
+  - public
+- name: resources
+  description: Files from resources/
+  keywords:
+  - resources
+  - resources
+- name: design
+  description: Files from assets/
+  keywords:
+  - design
+  - assets
+- name: layouts
+  description: Files from layouts/
+  keywords:
+  - layouts
+  - layouts
+- name: static
+  description: Files from static/
+  keywords:
+  - static
+  - static
+- name: general
+  description: Files that don't fit other rooms
+  keywords: []
