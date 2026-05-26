@@ -169,3 +169,19 @@ The control plane now runs on PM9A3s with power-loss protection and endurance I 
 - **The passthrough is chip-specific.** Check the USB bridge's VID:PID before declaring a serial unreadable; and remember a "premium" C-to-C cable can still be USB 2.0 for data.
 
 The disk swap was the easy part. The education was in the blast radius. The one honest piece of unfinished business is finally migrating that CloudNativePG cluster off `owner: postgres` so the password race can't come back — backups are solid, the procedure's validated, no more excuses. That might even be Part 4.
+
+---
+
+## Update: the blast radius had a seven-hour fuse
+
+A few hours after I'd declared victory, ntfy went off again: **bazarr's VolSync replication was out of date.** And here's the thing — it traced straight back to section 1 of this very post, which I'd apparently failed to fully internalise about my own cluster.
+
+stanton-02 was the **canary**. It was migrated *first*, before I'd worked out the recreate-the-directory restore dance — I only built that step on stanton-01 and reused it on stanton-03. So stanton-02's wiped OpenEBS cache directories were never recreated. They'd been gone the whole time.
+
+The reason it stayed invisible for seven hours is the sneaky part: **VolSync cache PVCs only get mounted when a replication actually fires.** So nothing failed at migration time — it failed lazily, one mover at a time, as each app's schedule came around and hit the same `path … does not exist` wall I described up top. By the time I looked, six movers were silently wedged in `Init` — bazarr, bazarr-foreign, metube, qui, romm, sonarr-uhd — and bazarr's was simply the first stale-replication alert loud enough to notice.
+
+**The symptom**: a VolSync "out of date" / out-of-sync alert hours after a node rebuild, with the mover pod stuck `Init` on `FailedMount: path "/var/openebs/local/pvc-… " does not exist`.
+
+**The fix**: the same trick from section 1, applied to *every* node-local volume on that node at once — recreate all the missing directories in a single pass (empty for caches, restored-from-backup for real data), then delete the wedged movers so they re-run. They all caught up immediately.
+
+**The lesson** — the one I'm adding because I learned it the hard way *after* publishing: when you wipe a hyperconverged node's `/var`, recreate **all** of that node's node-local directories right then, not just the ones actively complaining. The quiet ones aren't fine — they're just waiting for their next scheduled sync to bite you, and they'll do it on a timer you didn't set, hours after you've moved on. The blast radius doesn't always go off at once.
