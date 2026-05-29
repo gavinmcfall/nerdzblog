@@ -1,11 +1,12 @@
 ---
-title: "The Slow Death of Three Samsung 990 PROs"
-description: "What happens when you put consumer NVMe under an etcd + Ceph mon workload. Part 1 of 2."
+title: "Three 990 PROs, One Batch, All Dying — Part 1: The Slow Death"
+description: "What happens when you put consumer NVMe under an etcd + Ceph mon workload. Part 1 of 3."
 date: 2026-05-05
 slug: "2026/three-990-pros-all-dying-part-1"
 toc: true
 math: false
 draft: false
+featured: true
 Tags:
   - NVMe
   - SSD

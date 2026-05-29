@@ -1,0 +1,26 @@
+{{- /*
+  Shell Topbar — emits the EXACT SAME DOM as nerdz-landing's <Topbar />,
+  so theme + nav + telemetry pill read byte-identical across the unified app
+  and the Hugo blog. NAV mirrors nerdz-landing/src/lib/nav.ts; "blog" carries
+  aria-current="page" since this whole site IS the blog.
+*/ -}}
+<a class="shell-skip" href="#main">Skip to content</a>
+<header class="shell-topbar">
+  <div class="frame shell-topbar__inner">
+    <a class="shell-topbar__brand" href="https://nerdz.cloud/">
+      <span class="shell-topbar__dot" aria-hidden="true"></span>
+      nerdz.cloud
+    </a>
+
+    <nerdz-status class="shell-topbar__status mono"></nerdz-status>
+
+    <nav class="shell-topbar__nav" aria-label="Primary">
+      <a href="https://nerdz.cloud/projects">projects</a>
+      <a href="https://nerdz.cloud/manuals">field manuals</a>
+      <a href="/" aria-current="page">blog</a>
+      <a href="https://nerdz.cloud/about">about</a>
+      <a href="https://github.com/gavinmcfall" class="cta" target="_blank" rel="noreferrer noopener">github →</a>
+      {{ partial "theme-toggle.html" . }}
+    </nav>
+  </div>
+</header>

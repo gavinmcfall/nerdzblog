@@ -1,0 +1,42 @@
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ block "description" . }}{{ .Site.Params.description | default "Notes from the workshop — homelab, Star Citizen, 3D printing, TTRPGs." }}{{ end }}">
+
+  {{- /* No-flash theme script (same as nerdz-landing layout.tsx).
+         Reads localStorage('nerdz-theme'), falls back to prefers-color-scheme,
+         sets <html data-theme="light"> before CSS applies. */ -}}
+  <script>(function(){try{var t=localStorage.getItem('nerdz-theme');if(!t)t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';if(t==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+
+  {{- /* Canonical shell tokens + CSS — copied byte-for-byte from
+         nerdz-landing (the source of truth). Both files in /static. */ -}}
+  <link rel="stylesheet" href="/css/shell-tokens.css">
+  <link rel="stylesheet" href="/css/shell.css">
+
+  {{- /* IBM Plex Sans + JetBrains Mono (same families as nerdz-landing's
+         next/font). The shell reads --font-sans / --font-mono which
+         shell-tokens.css already resolves to var(--font-plex-sans) /
+         var(--font-jetbrains-mono); we just need to define those families. */ -}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-plex-sans: "IBM Plex Sans";
+      --font-jetbrains-mono: "JetBrains Mono";
+    }
+    /* a touch of body baseline — keeps the page from looking unstyled if
+       the blog-specific layout CSS hasn't loaded yet. */
+    html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: var(--font-sans); }
+    body { min-height: 100vh; }
+    a { color: inherit; text-decoration: none; }
+    /* Show only the icon that matches the active theme. (Unlike React, Hugo
+       renders both at build time; CSS picks the right one.) */
+    .palette-toggle__sun  { display: inline-block; }
+    .palette-toggle__moon { display: none; }
+    [data-theme="light"] .palette-toggle__sun  { display: none; }
+    [data-theme="light"] .palette-toggle__moon { display: inline-block; }
+  </style>
+
+  <link rel="alternate" type="application/rss+xml" href="/index.xml" title="{{ .Site.Title }} RSS">
+  {{ hugo.Generator }}

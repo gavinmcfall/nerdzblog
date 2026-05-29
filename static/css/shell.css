@@ -1,0 +1,271 @@
+/* shell.css — the canonical nerdz shared shell: header (Topbar), footer
+   (Colophon), the .frame primitive, the handful of utilities the shell
+   markup uses, and the View Transitions opt-in.
+   SOURCE OF TRUTH: nerdz/docs/unified-shell-spec.md §2 + §5. Do not edit a
+   copy; edit the spec, then re-sync both repos (nerdz-landing + nerdz-blog).
+   Reads design tokens from shell-tokens.css. */
+
+/* ─── seamless navigation (§5) ──────────────────────────────
+   Opt this document into cross-document View Transitions for same-origin
+   navigations. Naming the chrome makes the browser carry it ACROSS the
+   navigation (it stays fixed) instead of cross-fading it. Pure progressive
+   enhancement: unsupported browsers just do an ordinary navigation. */
+@view-transition { navigation: auto; }
+.shell-topbar   { view-transition-name: shell-topbar; }
+.shell-colophon { view-transition-name: shell-colophon; }
+
+/* ─── shared primitives + utilities ─────────────────────────── */
+.frame {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+}
+.mono { font-family: var(--font-mono); }
+.gold { color: var(--gold); }
+.sep  { color: var(--ink-veryDim); }
+
+/* ─── skip link ─────────────────────────────────────────────── */
+.shell-skip {
+  position: absolute;
+  left: -9999px; top: 0;
+  z-index: 100;
+  background: var(--paper-soft);
+  color: var(--ink);
+  padding: 10px 16px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.shell-skip:focus { left: 16px; top: 12px; }
+
+/* ─── TOPBAR ────────────────────────────────────────────────── */
+.shell-topbar {
+  position: sticky;
+  top: 0; z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule-strong);
+}
+.shell-topbar__inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 32px;
+  padding: 18px 0;
+}
+.shell-topbar__brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+.shell-topbar__dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--glow); box-shadow: 0 0 8px var(--glow);
+}
+/* live telemetry pill — <nerdz-status> renders its light-DOM content here */
+.shell-topbar__status {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  display: inline-flex; gap: 14px; align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  justify-self: center;
+  min-height: 1em;
+}
+.shell-topbar__status .gold { letter-spacing: 0.14em; }
+.shell-topbar__nav {
+  display: inline-flex; align-items: center; gap: 28px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-mute);
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+}
+.shell-topbar__nav a { transition: color 200ms ease; position: relative; }
+.shell-topbar__nav a:hover { color: var(--glow); }
+.shell-topbar__nav a[aria-current="page"] { color: var(--ink); }
+.shell-topbar__nav a[aria-current="page"]::after {
+  content: ''; position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 1px; background: var(--glow);
+}
+.shell-topbar__nav a.cta { color: var(--gold); }
+
+/* hamburger — hidden on desktop, shown when the inline nav collapses */
+.shell-topbar__menu {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--ink-mute);
+  justify-self: end;
+}
+
+/* ─── mobile drawer ─────────────────────────────────────────── */
+.shell-drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 0 18px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  text-transform: lowercase;
+}
+.shell-drawer[hidden] { display: none; }
+.shell-drawer a {
+  padding: 10px var(--gutter);
+  color: var(--ink-mid);
+  transition: color 200ms ease;
+}
+.shell-drawer a:hover,
+.shell-drawer a[aria-current="page"] { color: var(--ink); }
+.shell-drawer a.cta { color: var(--gold); }
+
+@media (max-width: 900px) {
+  .shell-topbar__inner { grid-template-columns: auto auto; }
+  .shell-topbar__status { display: none; }
+  .shell-topbar__nav { display: none; }
+  .shell-topbar__menu { display: inline-flex; }
+}
+
+/* ─── COLOPHON ──────────────────────────────────────────────── */
+.shell-colophon {
+  position: relative;
+  padding: 96px 0 48px;
+  border-top: 1px solid var(--rule);
+  background: linear-gradient(180deg, transparent, rgba(106, 13, 173, 0.08));
+}
+/* Light-mode: deeper, lower-alpha purple wash so the cream still gets a hint
+   of brand without the dark-mode 0.08 reading as cool-pink on cream. */
+[data-theme="light"] .shell-colophon {
+  background: linear-gradient(180deg, transparent, rgba(90, 14, 147, 0.05));
+}
+.shell-colophon__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 56px;
+}
+@media (max-width: 980px) { .shell-colophon__grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+@media (max-width: 540px) { .shell-colophon__grid { grid-template-columns: 1fr; } }
+.shell-colophon h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+.shell-colophon__pitch {
+  font-family: var(--font-sans);
+  font-size: 26px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 24px;
+  max-width: 28ch;
+  text-wrap: balance;
+}
+.shell-colophon__pitch em {
+  font-family: var(--font-sans);
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+.shell-colophon__btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.shell-colophon__list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.shell-colophon__list a {
+  color: var(--ink-mid);
+  font-size: 15px;
+  transition: color 200ms ease;
+  display: inline-flex; align-items: baseline; gap: 8px;
+}
+.shell-colophon__list a:hover { color: var(--gold); }
+.shell-colophon__list .arr {
+  color: var(--ink-dim);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.shell-colophon__credit {
+  font-family: var(--font-sans);
+  font-style: italic;
+  color: var(--ink-mute);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.shell-colophon__credit em { color: var(--gold); font-style: italic; }
+
+/* ─── imprint row ───────────────────────────────────────────── */
+.shell-imprint {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 32px;
+  align-items: center;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.shell-imprint__brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--ink);
+}
+.shell-imprint__dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--glow); box-shadow: 0 0 6px var(--glow);
+}
+.shell-imprint__center { text-align: center; color: var(--ink-mute); }
+.shell-imprint__center .gold { letter-spacing: 0.18em; }
+.shell-imprint__right { text-align: right; }
+@media (max-width: 720px) {
+  .shell-imprint { grid-template-columns: 1fr; text-align: center; gap: 12px; }
+  .shell-imprint__center, .shell-imprint__right, .shell-imprint__brand { justify-content: center; }
+}
+
+/* ── PALETTE TOGGLE (sun/moon) ──────────────────────────────── */
+.palette-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
+  color: var(--ink-mute);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+.palette-toggle:hover { color: var(--ink); border-color: var(--glow); }
+.palette-toggle svg { display: block; }
+
+/* In the mobile drawer, render as a labelled row to match the nav items. */
+.shell-drawer .palette-toggle {
+  width: auto;
+  height: auto;
+  padding: 10px var(--gutter);
+  margin: 0;
+  justify-content: flex-start;
+  border: 0;
+  border-radius: 0;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  text-transform: lowercase;
+  color: var(--ink-mid);
+}
+.shell-drawer .palette-toggle::after { content: "theme"; }

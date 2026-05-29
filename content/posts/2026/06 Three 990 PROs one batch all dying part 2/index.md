@@ -6,6 +6,7 @@ slug: "2026/three-990-pros-all-dying-part-2"
 toc: true
 math: false
 draft: false
+featured: true
 Tags:
   - NVMe
   - SSD

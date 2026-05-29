@@ -1,0 +1,130 @@
+{{ define "title" }}{{ .Site.Title }} — ramblings{{ end }}
+{{ define "extra-head" }}
+  <link rel="stylesheet" href="/css/blog-index.css">
+{{ end }}
+{{ define "extra-foot" }}
+  <script src="/js/blog-index.js" defer></script>
+{{ end }}
+{{ define "main" }}
+{{- $posts := where .Site.RegularPages "Type" "posts" -}}
+{{- $total := len $posts -}}
+{{- $byYear := $posts.GroupByDate "2006" -}}
+{{- $featured := first 3 (where $posts "Params.featured" true) -}}
+{{- if not $featured -}}{{ $featured = where $posts "Params.slug" "2025/talos-dr-reset" }}{{- end -}}
+<div class="frame">
+  <section id="idx-root" class="idx">
+
+    {{/* ───── masthead ───── */}}
+    <header class="idx__masthead">
+      <div>
+        <p class="idx__kicker">RAMBLINGS<span class="slash">// field log</span></p>
+        <h1 class="idx__title">Of <em>ramblings</em> &amp; field notes.</h1>
+        <p class="idx__lede">Homelab, Star Citizen, 3D printing, TTRPGs — whatever I'm nerding out on. Infrequent, and at length.</p>
+      </div>
+      <a class="idx__rss" href="/index.xml" aria-label="RSS feed">
+        <span class="idx__rss-dot" aria-hidden="true"></span>
+        <span>RSS · /feed</span>
+      </a>
+    </header>
+
+    {{/* ───── find / filter ───── */}}
+    <div class="idx__find">
+      <label class="idx__find-input">
+        <span class="idx__find-label">FIND</span>
+        <input id="idx-search" type="search" placeholder="title, subtitle, category…" autocomplete="off" aria-label="Search posts">
+        <button id="idx-clear" class="idx__find-clear" type="button" hidden>clear</button>
+        <span id="idx-kbd" class="idx__find-kbd">/</span>
+      </label>
+      <span id="idx-count" class="idx__find-count">
+        showing <span class="gold">{{ if lt $total 8 }}{{ $total }}{{ else }}8{{ end }}</span> of {{ $total }}
+      </span>
+    </div>
+
+    {{/* ───── tag chips ───── */}}
+    <div id="idx-tags" class="idx__tags" role="tablist" aria-label="Filter by category">
+      <button class="idx__tag is-active" data-tag="all" role="tab" aria-selected="true">all <span class="n">{{ $total }}</span></button>
+      {{- range $name, $taxonomy := .Site.Taxonomies.categories }}
+        <button class="idx__tag" data-tag="{{ $name | lower }}" role="tab" aria-selected="false">{{ $name | lower }} <span class="n">{{ len $taxonomy.Pages }}</span></button>
+      {{- end }}
+    </div>
+
+    {{/* ───── worth your time ───── */}}
+    {{- with $featured }}
+    <section id="idx-wyt" class="wyt" aria-label="Worth your time">
+      <p class="wyt__head">WORTH YOUR TIME</p>
+      <ul class="wyt__list">
+        {{- range . }}
+          {{- $cat := "" -}}
+          {{- with .Params.categories }}{{ $cat = index . 0 | lower }}{{ end -}}
+          <li><a class="wyt__row" href="{{ .RelPermalink }}">
+            <span class="wyt__arr" aria-hidden="true">↗</span>
+            <span class="wyt__title">{{ .Title }}</span>
+            <span class="wyt__cat">{{ $cat }}</span>
+          </a></li>
+        {{- end }}
+      </ul>
+    </section>
+    {{- end }}
+
+    {{/* ───── year groups ───── */}}
+    {{- range $byYear }}
+      {{- $yr := .Key -}}
+      {{- $yrCount := len .Pages -}}
+      <section class="yr" data-year="{{ $yr }}">
+        <header class="yr__head">
+          <span class="yr__num">{{ $yr }}</span>
+          <span class="yr__rule" aria-hidden="true"></span>
+          <span class="yr__count">{{ $yrCount }} LOG{{ if ne $yrCount 1 }}S{{ end }}</span>
+        </header>
+        <div class="yr__rows">
+          {{- range .Pages }}
+            {{- $cat := "" -}}
+            {{- $catDisp := "" -}}
+            {{- with .Params.categories }}{{ $cat = index . 0 | lower }}{{ $catDisp = index . 0 }}{{ end -}}
+            {{- $sub := .Description }}{{ if not $sub }}{{ $sub = .Summary | plainify | truncate 140 }}{{ end -}}
+            <a class="post" href="{{ .RelPermalink }}"
+               data-cat="{{ $cat }}"
+               data-cat-display="{{ $catDisp }}"
+               data-date="{{ .Date.Format "01·02" }}"
+               data-year="{{ $yr }}"
+               data-title="{{ .Title }}"
+               data-subtitle="{{ $sub }}">
+              <div class="post__grid--subtitle">
+                <span class="post__date">{{ .Date.Format "01·02" }}</span>
+                <span class="post__title">{{ .Title }}</span>
+                <span class="post__meta">
+                  {{- if $catDisp }}<span>{{ $catDisp | lower }}</span><span class="dot">·</span>{{ end -}}
+                  <span>{{ .ReadingTime }} min</span>
+                </span>
+                {{- if $sub }}<p class="post__subtitle">{{ $sub }}</p>{{ end }}
+              </div>
+            </a>
+          {{- end }}
+        </div>
+      </section>
+    {{- end }}
+
+    {{/* ───── empty state ───── */}}
+    <div id="idx-empty" class="idx__empty" hidden>
+      no entries match — <span class="gold">refine the query</span>, or
+      <button type="button" data-reset>reset filters</button>
+    </div>
+
+    {{/* ───── cursor pagination ───── */}}
+    <div id="idx-cursor" class="idx__cursor" hidden>
+      <button id="idx-cursor-btn" class="idx__cursor-btn" type="button">load more <span class="arr" aria-hidden="true">↓</span></button>
+      <span id="idx-cursor-meta" class="idx__cursor-meta"></span>
+    </div>
+    <div id="idx-cursor-end" class="idx__cursor" hidden>
+      <span class="idx__cursor-meta"><span>· end of register ·</span></span>
+    </div>
+
+    {{/* ───── tail ───── */}}
+    <footer class="idx__tail">
+      <span>register · {{ $total }} entries · since 2024 · press <kbd style="border:1px solid var(--rule); padding:1px 5px; border-radius:3px;">/</kbd> to search</span>
+      <span id="idx-tail-right" class="idx__tail-right">register · {{ $total }} entries · since 2024</span>
+    </footer>
+
+  </section>
+</div>
+{{ end }}

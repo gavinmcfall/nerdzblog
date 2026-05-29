@@ -1,0 +1,78 @@
+/* shell-tokens.css — canonical nerdz velvet shell tokens.
+   SOURCE OF TRUTH: nerdz/docs/unified-shell-spec.md §1. Do not edit a copy;
+   edit the spec, then re-sync both repos (nerdz-landing + nerdz-blog). */
+:root {
+  /* surface */
+  --paper:        #0a0712;   /* base / body */
+  --paper-deep:   #060309;   /* code wells, recessed */
+  --paper-soft:   #15101f;   /* raised surface */
+  --paper-card:   #100b1c;   /* cards */
+
+  /* ink */
+  --ink:          #f1e8d6;   /* primary text (warm off-white) */
+  --ink-mid:      #d8cfb9;   /* body copy */
+  --ink-mute:     #a39a85;   /* secondary / meta */
+  --ink-dim:      #6e6757;   /* tertiary */
+  --ink-veryDim:  #3a352c;   /* separators in mono meta */
+
+  /* accent */
+  --purple-deep:  #3a0d4a;
+  --purple:       #6A0DAD;   /* true purple — solid fills, badges */
+  --magenta:      #8B008B;
+  --glow:         #a855f7;   /* glow violet — links/accents on dark */
+  --glow-soft:    #c084fc;
+  --gold:         #c9a86e;   /* category labels / secondary accent */
+  --gold-soft:    #8a7547;
+
+  /* lines */
+  --rule:         rgba(241, 232, 214, 0.10);
+  --rule-strong:  rgba(241, 232, 214, 0.20);
+
+  /* layout */
+  --max:          1640px;
+  --gutter:       40px;
+  --radius:       10px;
+  --radius-lg:    14px;
+  --radius-sm:    6px;
+
+  /* type — the host sets --font-plex-sans / --font-jetbrains-mono
+     (next/font in the app; @font-face in the blog). Shell CSS reads
+     --font-sans / --font-mono only. */
+  --font-sans:    var(--font-plex-sans), system-ui, -apple-system, sans-serif;
+  --font-mono:    var(--font-jetbrains-mono), ui-monospace, Menlo, monospace;
+}
+
+/* ── Light theme ──────────────────────────────────────────────────
+   Activated by `data-theme="light"` on <html> (set by the no-flash script in
+   layout.tsx + the ThemeToggle component, with system preference as default).
+   Same token names, inverted values from the claude.ai/design dual-theme
+   system (see docs/design-handoff/blog-article.jsx for the canonical set). */
+[data-theme="light"] {
+  /* surface — cream "paper" sheet */
+  --paper:        #efe6d2;
+  --paper-deep:   #e0d4ba;
+  --paper-soft:   #f3ecda;
+  --paper-card:   #fbf6ea;
+
+  /* ink — dark on cream */
+  --ink:          #1a141f;
+  --ink-mid:      #2a2230;
+  --ink-mute:     #5e5468;
+  --ink-dim:      #8c8194;
+  --ink-veryDim:  #b4abb8;
+
+  /* accent — deeper purple/gold for readability on cream */
+  --purple:       #5a0e93;
+  --glow:         #7c2eb5;
+  --glow-soft:    #a878d8;
+  --gold:         #8a7547;
+  --gold-soft:    #6e5b35;
+
+  /* lines */
+  --rule:         rgba(26, 20, 31, 0.10);
+  --rule-strong:  rgba(26, 20, 31, 0.20);
+}
+
+@media (max-width: 720px) {
+  :root { --gutter: 22px; }
+}
