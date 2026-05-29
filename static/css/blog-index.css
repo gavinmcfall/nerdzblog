@@ -215,12 +215,16 @@
   color: var(--ink);
   transition: color 200ms;
 }
-.wyt__cat {
+.wyt__cat,
+.wyt__meta {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--ink-mute);
   letter-spacing: 0.1em;
+  white-space: nowrap;
+  display: inline-flex; gap: 8px; align-items: baseline;
 }
+.wyt__meta .dot { color: var(--ink-veryDim); }
 
 /* ─── year groups ─── */
 .yr { margin: 0 0 44px; }

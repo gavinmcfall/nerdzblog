@@ -59,7 +59,10 @@
           <li><a class="wyt__row" href="{{ .RelPermalink }}">
             <span class="wyt__arr" aria-hidden="true">↗</span>
             <span class="wyt__title">{{ .Title }}</span>
-            <span class="wyt__cat">{{ $cat }}</span>
+            <span class="wyt__meta">
+              {{- if $cat }}<span>{{ $cat }}</span><span class="dot">·</span>{{ end -}}
+              <span>{{ .ReadingTime }} min</span>
+            </span>
           </a></li>
         {{- end }}
       </ul>
