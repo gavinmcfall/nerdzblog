@@ -1,19 +1,76 @@
 {{ define "title" }}{{ .Title }} — {{ .Site.Title }}{{ end }}
-{{ define "description" }}{{ with .Summary }}{{ . | truncate 160 | plainify }}{{ end }}{{ end }}
+{{ define "description" }}{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}{{ end }}
+{{ define "extra-head" }}
+  <link rel="stylesheet" href="/css/blog-article.css">
+{{ end }}
 {{ define "main" }}
-  <article class="frame" style="padding: 64px 0 96px; max-width: 760px;">
-    <header style="margin: 0 0 32px;">
-      {{ with .Params.categories }}<p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin: 0 0 18px;">{{ index . 0 }}</p>{{ end }}
-      <h1 style="font-family: var(--font-sans); font-weight: 700; font-size: clamp(32px, 4vw, 44px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 16px; color: var(--ink);">{{ .Title }}</h1>
-      {{ with .Description }}<p style="color: var(--ink-mid); font-size: 20px; line-height: 1.45; margin: 0 0 18px; max-width: 58ch;">{{ . }}</p>{{ end }}
-      <p style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); margin: 0;">
-        <span>{{ .Date.Format "2006·01·02" }}</span>
-        {{ if .ReadingTime }}<span style="color: var(--ink-veryDim);"> · </span><span>{{ .ReadingTime }} min</span>{{ end }}
-      </p>
-    </header>
+{{- $cat := "" -}}
+{{- with .Params.categories }}{{ $cat = index . 0 }}{{ end -}}
+{{- $words := .WordCount -}}
+{{- $hasUpdated := and .Lastmod (gt (sub .Lastmod.Unix .Date.Unix) 86400) -}}
+<div class="article">
+  <div class="article__frame">
+    <article class="article__main">
 
-    <div style="color: var(--ink-mid); font-size: 17px; line-height: 1.7; max-width: 70ch;" class="prose">
+      {{ with $cat }}<div class="article__kicker">{{ . | lower }}</div>{{ end }}
+      <h1 class="article__title">{{ .Title }}</h1>
+      {{ with .Description }}<p class="article__lede">{{ . }}</p>{{ end }}
+
+      <dl class="article__meta">
+        <span class="pair"><dt>posted</dt><dd>{{ .Date.Format "2006·01·02" }}</dd></span>
+        {{ if .ReadingTime }}<span class="pair"><dt>read</dt><dd>{{ .ReadingTime }} min</dd></span>{{ end }}
+        {{ with $cat }}<span class="pair"><dt>cat</dt><dd class="gold">{{ . | lower }}</dd></span>{{ end }}
+        {{ if $words }}<span class="pair"><dt>words</dt><dd>{{ lang.FormatNumber 0 $words }}</dd></span>{{ end }}
+        {{ if $hasUpdated }}<span class="pair"><dt>updated</dt><dd>{{ .Lastmod.Format "01·02" }}</dd></span>{{ end }}
+      </dl>
+
+      {{ if .TableOfContents }}
+      <details class="article__toc-inline" open>
+        <summary>on this page</summary>
+        {{ .TableOfContents }}
+      </details>
+      {{ end }}
+
       {{ .Content }}
-    </div>
-  </article>
+
+      {{ if or .PrevInSection .NextInSection }}
+      <nav class="article__nav" aria-label="adjacent posts">
+        {{ with .PrevInSection }}
+          <a class="prev" href="{{ .RelPermalink }}">
+            <span class="label">‹ previous</span>
+            <span class="title">{{ .Title }}</span>
+          </a>
+        {{ else }}<span class="prev-placeholder"></span>{{ end }}
+        {{ with .NextInSection }}
+          <a class="next" href="{{ .RelPermalink }}">
+            <span class="label">next ›</span>
+            <span class="title">{{ .Title }}</span>
+          </a>
+        {{ else }}<span class="next-placeholder"></span>{{ end }}
+      </nav>
+      {{ end }}
+
+      {{ with .Params.tags }}
+      <div class="article__related">
+        related
+        <span style="margin-left: 14px;">
+          {{ range . }}
+            {{ $term := . | urlize }}
+            <a class="tag" href="/tags/{{ $term }}/">{{ . | lower }}</a>
+          {{ end }}
+        </span>
+      </div>
+      {{ end }}
+
+    </article>
+
+    {{ if .TableOfContents }}
+    <aside class="article__rail" aria-label="On this page">
+      <div class="article__rail-head">on this page</div>
+      {{ .TableOfContents }}
+    </aside>
+    {{ end }}
+
+  </div>
+</div>
 {{ end }}

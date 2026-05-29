@@ -4,9 +4,9 @@
   {{- partial "head.html" . -}}
   {{- block "extra-head" . }}{{- end }}
 </head>
-<body>
+<body data-atm-default="all">
   {{ partial "topbar.html" . }}
-  <main id="main">
+  <main id="main" class="page-stage">
     {{- block "main" . }}{{- end }}
   </main>
   {{ partial "colophon.html" . }}
@@ -16,6 +16,7 @@
          (or it degrades gracefully to "akl, nz" only — see nerdz-status.js). */ -}}
   <script src="/js/nerdz-status.js" defer></script>
   <script src="/js/theme-toggle.js" defer></script>
+  <script src="/js/atmosphere.js" defer></script>
   {{- block "extra-foot" . }}{{- end }}
 </body>
 </html>
