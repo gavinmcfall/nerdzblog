@@ -14,9 +14,9 @@
   {{- /* Live telemetry pill — fetches /api/cluster from nerdz.cloud. Until
          plan 5 makes the blog same-origin, this needs CORS on the endpoint
          (or it degrades gracefully to "akl, nz" only — see nerdz-status.js). */ -}}
-  <script src="/js/nerdz-status.js" defer></script>
-  <script src="/js/theme-toggle.js" defer></script>
-  <script src="/js/atmosphere.js" defer></script>
+  <script src="{{ "js/nerdz-status.js" | relURL }}" defer></script>
+  <script src="{{ "js/theme-toggle.js" | relURL }}" defer></script>
+  <script src="{{ "js/atmosphere.js" | relURL }}" defer></script>
   {{- block "extra-foot" . }}{{- end }}
 </body>
 </html>

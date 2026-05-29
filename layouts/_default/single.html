@@ -1,7 +1,7 @@
 {{ define "title" }}{{ .Title }} — {{ .Site.Title }}{{ end }}
 {{ define "description" }}{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}{{ end }}
 {{ define "extra-head" }}
-  <link rel="stylesheet" href="/css/blog-article.css">
+  <link rel="stylesheet" href="{{ "css/blog-article.css" | relURL }}">
 {{ end }}
 {{ define "main" }}
 {{- $cat := "" -}}
@@ -56,7 +56,7 @@
         <span style="margin-left: 14px;">
           {{ range . }}
             {{ $term := . | urlize }}
-            <a class="tag" href="/tags/{{ $term }}/">{{ . | lower }}</a>
+            <a class="tag" href="{{ printf "tags/%s/" $term | relURL }}">{{ . | lower }}</a>
           {{ end }}
         </span>
       </div>

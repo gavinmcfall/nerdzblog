@@ -1,9 +1,9 @@
 {{ define "title" }}{{ .Site.Title }} — ramblings{{ end }}
 {{ define "extra-head" }}
-  <link rel="stylesheet" href="/css/blog-index.css">
+  <link rel="stylesheet" href="{{ "css/blog-index.css" | relURL }}">
 {{ end }}
 {{ define "extra-foot" }}
-  <script src="/js/blog-index.js" defer></script>
+  <script src="{{ "js/blog-index.js" | relURL }}" defer></script>
 {{ end }}
 {{ define "main" }}
 {{- $posts := where .Site.RegularPages "Type" "posts" -}}
@@ -21,7 +21,7 @@
         <h1 class="idx__title">Of <em>ramblings</em> &amp; field notes.</h1>
         <p class="idx__lede">Homelab, Star Citizen, 3D printing, TTRPGs — whatever I'm nerding out on. Infrequent, and at length.</p>
       </div>
-      <a class="idx__rss" href="/index.xml" aria-label="RSS feed">
+      <a class="idx__rss" href="{{ "index.xml" | relURL }}" aria-label="RSS feed">
         <span class="idx__rss-dot" aria-hidden="true"></span>
         <span>RSS · /feed</span>
       </a>

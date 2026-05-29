@@ -10,9 +10,9 @@
 
   {{- /* Canonical shell tokens + CSS — copied byte-for-byte from
          nerdz-landing (the source of truth). Both files in /static. */ -}}
-  <link rel="stylesheet" href="/css/shell-tokens.css">
-  <link rel="stylesheet" href="/css/shell.css">
-  <link rel="stylesheet" href="/css/atmosphere.css">
+  <link rel="stylesheet" href="{{ "css/shell-tokens.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/shell.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/atmosphere.css" | relURL }}">
 
   {{- /* IBM Plex Sans + JetBrains Mono (same families as nerdz-landing's
          next/font). The shell reads --font-sans / --font-mono which
@@ -39,5 +39,5 @@
     [data-theme="light"] .palette-toggle__moon { display: inline-block; }
   </style>
 
-  <link rel="alternate" type="application/rss+xml" href="/index.xml" title="{{ .Site.Title }} RSS">
+  <link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | relURL }}" title="{{ .Site.Title }} RSS">
   {{ hugo.Generator }}
