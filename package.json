@@ -1,0 +1,9 @@
+{
+  "name": "nerdz-blog",
+  "private": true,
+  "description": "Hugo blog at blog.nerdz.cloud — the Hugo build wrapped as npm scripts so the rest of the nerdz orbit's tooling (verify-gate hook, CI) speaks the same language.",
+  "scripts": {
+    "build": "hugo --minify",
+    "dev": "hugo server"
+  }
+}
