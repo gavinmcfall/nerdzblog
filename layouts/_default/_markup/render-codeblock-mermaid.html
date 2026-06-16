@@ -1,0 +1,5 @@
+{{- /* Render ```mermaid fenced blocks as a diagram, and flag the page so the
+       loader in single.html's extra-foot block pulls the self-hosted mermaid.js
+       only on pages that actually use it. */ -}}
+<pre class="mermaid">{{ .Inner | htmlEscape | safeHTML }}</pre>
+{{- .Page.Store.Set "hasMermaid" true -}}

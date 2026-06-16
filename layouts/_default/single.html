@@ -74,3 +74,12 @@
   </div>
 </div>
 {{ end }}
+
+{{- /* Mermaid: self-hosted, loaded only on posts that contain a ```mermaid block
+       (flagged by the codeblock render hook). Theme follows the dark default. */ -}}
+{{ define "extra-foot" }}
+  {{ if .Store.Get "hasMermaid" }}
+  <script src="{{ "js/mermaid.min.js" | relURL }}"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: "dark", securityLevel: "strict" });</script>
+  {{ end }}
+{{ end }}
